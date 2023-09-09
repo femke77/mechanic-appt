@@ -8,6 +8,9 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'devextreme/dist/css/dx.light.css';
+import Home from './pages/Home';
+import Signin from './pages/SignIn';
+import Signup from './pages/SignUp';
 
 
 
@@ -41,22 +44,21 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
-          <Header />
           <div className="container">
-            {/* <Routes>
+            <Routes>
               <Route 
                 path="/"
                 element={<Home />}
               />
               <Route 
-                path="/login" 
-                element={<Login />}
+                path="/signin" 
+                element={<Signin />}
               />
               <Route 
                 path="/signup" 
                 element={<Signup />}
               />
-              <Route 
+              {/* <Route 
                 path="/me" 
                 element={<Profile />}
               />
@@ -67,10 +69,9 @@ function App() {
               <Route 
                 path="/thoughts/:thoughtId" 
                 element={<SingleThought />}
-              />
-            </Routes> */}
+              /> */}
+            </Routes>
           </div>
-          <Footer />
         </div>
       </Router>
     </ApolloProvider>
