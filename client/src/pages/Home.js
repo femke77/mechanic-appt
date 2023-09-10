@@ -1,10 +1,9 @@
 import * as React from 'react';
-import ProductCategories from '../modules/views/ProductCategories';
+import ServiceCategories from '../modules/views/ServiceCategories';
 import ProductSmokingHero from '../modules/views/ProductSmokingHero';
 import AppFooter from '../modules/views/AppFooter';
 import Hero from '../modules/views/Hero';
-import ProductValues from '../modules/views/ProductValues';
-import ProductHowItWorks from '../modules/views/ProductHowItWorks';
+import HowItWorks from '../modules/views/HowItWorks';
 import ProductCTA from '../modules/views/ProductCTA';
 import AppAppBar from '../modules/views/AppAppBar';
 import withRoot from '../modules/withRoot';
@@ -14,9 +13,8 @@ function Index() {
     <React.Fragment>
       <AppAppBar />
       <Hero />
-      <ProductValues />
-      <ProductCategories />
-      <ProductHowItWorks />
+      <ServiceCategories />
+      <HowItWorks />
       <ProductCTA />
       <ProductSmokingHero />
       <AppFooter />
