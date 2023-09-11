@@ -5,13 +5,15 @@ import Link from '@mui/material/Link';
 import Container from '@mui/material/Container';
 import Typography from '../components/Typography';
 import TextField from '../components/TextField';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faFacebook, faInstagram, faTwitter} from '@fortawesome/free-brands-svg-icons';
 
 function Copyright() {
   return (
     <React.Fragment>
       {'© '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
+      <Link color="inherit" href="">
+        Carpointment
       </Link>{' '}
       {new Date().getFullYear()}
     </React.Fragment>
@@ -24,7 +26,7 @@ const iconStyle = {
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
-  backgroundColor: 'warning.main',
+  backgroundColor: 'black',
   mr: 1,
   '&:hover': {
     bgcolor: 'warning.dark',
@@ -35,6 +37,10 @@ const LANGUAGES = [
   {
     code: 'en-US',
     name: 'English',
+  },
+  {
+    code: 'es',
+    name: 'Español',
   },
   {
     code: 'fr-FR',
@@ -59,17 +65,14 @@ export default function AppFooter() {
               sx={{ height: 120 }}
             >
               <Grid item sx={{ display: 'flex' }}>
-                <Box component="a" href="https://mui.com/" sx={iconStyle}>
-                  <img
-                    src="/static/themes/onepirate/appFooterFacebook.png"
-                    alt="Facebook"
-                  />
+                <Box component="a" href="https://facebook.com" target= "_blank" sx={iconStyle}>
+                <FontAwesomeIcon icon={faFacebook} />
                 </Box>
-                <Box component="a" href="https://twitter.com/MUI_hq" sx={iconStyle}>
-                  <img
-                    src="/static/themes/onepirate/appFooterTwitter.png"
-                    alt="Twitter"
-                  />
+                <Box component="a" href="https://twitter.com" target= "_blank" sx={iconStyle}>
+                <FontAwesomeIcon icon={faTwitter} />
+                </Box>
+                <Box component="a" href="https://instagram.com" target= "_blank" sx={iconStyle}>
+                <FontAwesomeIcon icon={faInstagram} />
                 </Box>
               </Grid>
               <Grid item>
@@ -109,27 +112,6 @@ export default function AppFooter() {
                 </option>
               ))}
             </TextField>
-          </Grid>
-          <Grid item>
-            <Typography variant="caption">
-              {'Icons made by '}
-              <Link href="https://www.freepik.com" rel="sponsored" title="Freepik">
-                Freepik
-              </Link>
-              {' from '}
-              <Link href="https://www.flaticon.com" rel="sponsored" title="Flaticon">
-                www.flaticon.com
-              </Link>
-              {' is licensed by '}
-              <Link
-                href="https://creativecommons.org/licenses/by/3.0/"
-                title="Creative Commons BY 3.0"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                CC 3.0 BY
-              </Link>
-            </Typography>
           </Grid>
         </Grid>
       </Container>

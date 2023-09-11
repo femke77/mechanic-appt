@@ -1,12 +1,11 @@
 import * as React from 'react';
 import ServiceCategories from '../modules/views/ServiceCategories';
-import ProductSmokingHero from '../modules/views/ProductSmokingHero';
 import AppFooter from '../modules/views/AppFooter';
 import Hero from '../modules/views/Hero';
 import HowItWorks from '../modules/views/HowItWorks';
-import ProductCTA from '../modules/views/ProductCTA';
 import AppAppBar from '../modules/views/AppAppBar';
 import withRoot from '../modules/withRoot';
+import AIPortalHero from '../modules/views/AIPortalHero';
 
 function Index() {
   return (
@@ -15,8 +14,7 @@ function Index() {
       <Hero />
       <ServiceCategories />
       <HowItWorks />
-      <ProductCTA />
-      <ProductSmokingHero />
+      <AIPortalHero />
       <AppFooter />
     </React.Fragment>
   );

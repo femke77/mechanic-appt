@@ -3,8 +3,10 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import Typography from '../components/Typography';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faWrench } from '@fortawesome/free-solid-svg-icons'
 
-function ProductSmokingHero() {
+function AIPortalHero() {
   return (
     <Container
       component="section"
@@ -20,20 +22,18 @@ function ProductSmokingHero() {
         }}
       >
         <Typography variant="h4" component="span">
-          Got any questions? Need help?
+          Got questions about your car? Need help?
         </Typography>
       </Button>
       <Typography variant="subtitle1" sx={{ my: 3 }}>
-        We are here to help. Get in touch!
+        Your AI mechanic is here to help!
       </Typography>
-      <Box
-        component="img"
-        src="/static/themes/onepirate/productBuoy.svg"
-        alt="buoy"
-        sx={{ width: 60 }}
-      />
+      <Box/>
+      <br/>
+      <FontAwesomeIcon icon={faWrench}/>
+      <br/>
     </Container>
   );
 }
 
-export default ProductSmokingHero;
+export default AIPortalHero;
