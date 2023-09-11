@@ -37,7 +37,7 @@ export default function Hero() {
         variant="contained"
         size="large"
         component="a"
-        href="/premium-themes/onepirate/sign-up/"
+        href="http://localhost:3000/signup"
         sx={{ minWidth: 200 }}
       >
         Register

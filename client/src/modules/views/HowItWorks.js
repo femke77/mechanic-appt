@@ -5,6 +5,8 @@ import Grid from '@mui/material/Grid';
 import Container from '@mui/material/Container';
 import Button from '../components/Button';
 import Typography from '../components/Typography';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUser, faCalendarCheck, faCar } from '@fortawesome/free-solid-svg-icons'
 
 const item = {
   display: 'flex',
@@ -20,12 +22,7 @@ const number = {
   fontWeight: 'medium',
 };
 
-const image = {
-  height: 55,
-  my: 4,
-};
-
-function ProductHowItWorks() {
+function HowItWorks() {
   return (
     <Box
       component="section"
@@ -60,44 +57,35 @@ function ProductHowItWorks() {
             <Grid item xs={12} md={4}>
               <Box sx={item}>
                 <Box sx={number}>1.</Box>
-                <Box
-                  component="img"
-                  src="/static/themes/onepirate/productHowItWorks1.svg"
-                  alt="suitcase"
-                  sx={image}
-                />
+                <br/>
+                <FontAwesomeIcon icon={faUser}/>
+                <br/>
                 <Typography variant="h5" align="center">
-                  Appointment every Wednesday 9am.
+                  Sign-Up! Already a member?...Sign-In.
                 </Typography>
               </Box>
             </Grid>
             <Grid item xs={12} md={4}>
               <Box sx={item}>
                 <Box sx={number}>2.</Box>
-                <Box
-                  component="img"
-                  src="/static/themes/onepirate/productHowItWorks2.svg"
-                  alt="graph"
-                  sx={image}
-                />
+                <Box/>
+                <br/>
+                <FontAwesomeIcon icon={faCalendarCheck}/>
+                <br/>
                 <Typography variant="h5" align="center">
-                  First come, first served. Our offers are in limited quantities, so
-                  be quick.
+                  Choose your appointment and your service.
                 </Typography>
               </Box>
             </Grid>
             <Grid item xs={12} md={4}>
               <Box sx={item}>
                 <Box sx={number}>3.</Box>
-                <Box
-                  component="img"
-                  src="/static/themes/onepirate/productHowItWorks3.svg"
-                  alt="clock"
-                  sx={image}
-                />
+                <Box/>
+                <br/>
+                <FontAwesomeIcon icon={faCar}/>
+                <br/>
                 <Typography variant="h5" align="center">
-                  {'New offers every week. New experiences, new surprises. '}
-                  {'Your Sundays will no longer be alike.'}
+                  Bring your car in and we'll take care of the rest!
                 </Typography>
               </Box>
             </Grid>
@@ -108,7 +96,7 @@ function ProductHowItWorks() {
           size="large"
           variant="contained"
           component="a"
-          href="/premium-themes/onepirate/sign-up/"
+          href="http://localhost:3000/signup"
           sx={{ mt: 8 }}
         >
           Get started
@@ -118,4 +106,4 @@ function ProductHowItWorks() {
   );
 }
 
-export default ProductHowItWorks;
+export default HowItWorks;
