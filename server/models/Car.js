@@ -2,8 +2,15 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 
-const CarSchema = new Schema ({
-    year: {type: String, required: true, minlength: 4, maxlength: 4},
-    make: {type: String, required: true},
-    model: {type: String, required: true},
+// Matches our car db collection, read only, used for the appointment dropdown
+const carSchema = new Schema ({
+    year: Number,
+    model: String,
+  
+
+
 })
+
+const Car = mongoose.model('car', carSchema);
+
+module.exports = Car;

@@ -27,10 +27,7 @@ const userSchema = new Schema({
   phonenumber: {
     type: String
   },
-  cars: [{
-    type: Schema.Types.ObjectId,
-    ref: 'car',
-  }],
+
   appointments: [{
     type: Schema.Types.ObjectId,
     ref: 'appointment'
@@ -52,6 +49,6 @@ userSchema.methods.isCorrectPassword = async function(password) {
   return await bcrypt.compare(password, this.password);
 };
 
-const User = mongoose.model('User', userSchema);
+const User = mongoose.model('user', userSchema);
 
 module.exports = User;
