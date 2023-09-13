@@ -11,7 +11,7 @@ import 'devextreme/dist/css/dx.light.css';
 import Home from './pages/Home';
 import Signin from './pages/SignIn';
 import Signup from './pages/SignUp';
-
+import Profile from './pages/Profile';
 
 
 
@@ -58,11 +58,11 @@ function App() {
                 path="/signup" 
                 element={<Signup />}
               />
-              {/* <Route 
-                path="/me" 
+              <Route 
+                path="/profile" 
                 element={<Profile />}
               />
-              <Route 
+              {/* <Route 
                 path="/profiles/:username" 
                 element={<Profile />}
               />

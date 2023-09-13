@@ -11,6 +11,8 @@ import RFTextField from '../modules/form/RFTextField';
 import FormButton from '../modules/form/FormButton';
 import FormFeedback from '../modules/form/FormFeedback';
 import withRoot from '../modules/withRoot';
+// import { useHistory } from 'react-router-dom';
+
 
 function SignIn() {
   const [sent, setSent] = React.useState(false);
@@ -28,8 +30,11 @@ function SignIn() {
     return errors;
   };
 
+  // const history = useHistory();
+
   const handleSubmit = () => {
     setSent(true);
+    // history.push('/profile');
   };
 
   return (
