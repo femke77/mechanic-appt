@@ -11,7 +11,7 @@ import 'devextreme/dist/css/dx.light.css';
 import Home from './pages/Home';
 import Signin from './pages/SignIn';
 import Signup from './pages/SignUp';
-import Profile from './pages/Profile';
+import Appointment from './pages/Appointment';
 
 
 
@@ -59,8 +59,8 @@ function App() {
                 element={<Signup />}
               />
               <Route 
-                path="/profile" 
-                element={<Profile />}
+                path="/appointment" 
+                element={<Appointment />}
               />
               {/* <Route 
                 path="/profiles/:username" 

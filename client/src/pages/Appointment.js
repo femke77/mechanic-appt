@@ -12,8 +12,10 @@ function App() {
   return (
     <React.Fragment>
       <AppAppBar />
+      <div className="schedule-container">
       <Scheduler className="scheduler">
         </Scheduler>
+        </div>
       <AppFooter />
     </React.Fragment>
   );
