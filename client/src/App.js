@@ -7,7 +7,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import 'devextreme/dist/css/dx.light.css';
+
 import Home from './pages/Home';
 import Signin from './pages/SignIn';
 import Signup from './pages/SignUp';
@@ -42,6 +42,7 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
+
       <Router>
         <div className="flex-column justify-flex-start min-100-vh">
           <div className="container">
