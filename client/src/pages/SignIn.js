@@ -11,12 +11,15 @@ import RFTextField from '../modules/form/RFTextField';
 import FormButton from '../modules/form/FormButton';
 import FormFeedback from '../modules/form/FormFeedback';
 import withRoot from '../modules/withRoot';
+import { useMutation } from '@apollo/client';
+import { LOGIN_USER } from '../utils/Mutations';
 // import { useHistory } from 'react-router-dom';
+import Auth from '../utils/Auth';
 
 
 function SignIn() {
   const [sent, setSent] = React.useState(false);
-
+  const [signin, {error}] = useMutation (LOGIN_USER);
   const validate = (values) => {
     const errors = required(['email', 'password'], values);
 
@@ -32,8 +35,18 @@ function SignIn() {
 
   // const history = useHistory();
 
-  const handleSubmit = () => {
+  const handleSubmit = async (values) => {
     setSent(true);
+    
+    try {
+      const { data } = await signin ({
+        variables: {...values}
+      })
+      Auth.login(data.login.token)
+
+    } catch (error) {
+      console.log(error)
+    }
     // history.push('/profile');
   };
 
@@ -48,7 +61,7 @@ function SignIn() {
           <Typography variant="body2" align="center">
             {'Not a member yet? '}
             <Link
-              href="/premium-themes/onepirate/sign-up/"
+              href="/sign-up/"
               align="center"
               underline="always"
             >
@@ -109,7 +122,7 @@ function SignIn() {
           )}
         </Form>
         <Typography align="center">
-          <Link underline="always" href="/premium-themes/onepirate/forgot-password/">
+          <Link underline="always" href="/forgot-password/">
             Forgot password?
           </Link>
         </Typography>

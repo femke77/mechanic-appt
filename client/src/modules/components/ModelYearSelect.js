@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
-import { QUERY_CARS } from "./utils/queries";
+import { QUERY_CARS } from "../../utils/Queries";
 
 export default function ModelYearSelect({model, year, handleModelChange, handleYearChange}) {
 
