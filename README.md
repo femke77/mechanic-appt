@@ -3,9 +3,9 @@
 ## Table of Contents
 
 - [Description](#description)
-- [Motivation for Development](#motivation)
+- [Motivation for Development](#motivation-for-developement)
 - [Tools & Technologies used](#toolstechnologies-used)
-- [User Story](#user)
+- [User Story](#user-story)
 - [Demo](#demo)
 - [Acknowledgements](#acknowledgements)
 

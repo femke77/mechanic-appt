@@ -5,17 +5,17 @@ import withRoot from '../modules/withRoot';
 import 'devextreme/dist/css/dx.light.css';
 import '../App.css';
  
-import { Scheduler } from 'devextreme-react/scheduler';
+// import { Scheduler } from 'devextreme-react/scheduler';
  
 function App() {
 
   return (
     <React.Fragment>
       <AppAppBar />
-      <div className="schedule-container">
+      {/* <div className="schedule-container">
       <Scheduler className="scheduler">
         </Scheduler>
-        </div>
+        </div> */}
       <AppFooter />
     </React.Fragment>
   );

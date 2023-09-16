@@ -12,6 +12,7 @@ import Home from './pages/Home';
 import Signin from './pages/SignIn';
 import Signup from './pages/SignUp';
 import Appointment from './pages/Appointment';
+import Profile from './pages/Profile';
 
 
 
@@ -62,11 +63,11 @@ function App() {
                 path="/appointment" 
                 element={<Appointment />}
               />
-              {/* <Route 
-                path="/profiles/:username" 
+              <Route 
+                path="/profile" 
                 element={<Profile />}
               />
-              <Route 
+              {/* <Route 
                 path="/thoughts/:thoughtId" 
                 element={<SingleThought />}
               /> */}
