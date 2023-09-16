@@ -12,25 +12,61 @@ import RFTextField from '../modules/form/RFTextField';
 import FormButton from '../modules/form/FormButton';
 import FormFeedback from '../modules/form/FormFeedback';
 import withRoot from '../modules/withRoot';
+import { ADD_USER } from '../utils/Mutations';
+import { useMutation } from '@apollo/client';
+
 
 function SignUp() {
   const [sent, setSent] = React.useState(false);
+  const [forms, formState, setFormState] = React.useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    password: '',
+    phonenumber: ''
+  });
 
-  const validate = (values) => {
-    const errors = required(['firstName', 'lastName', 'email', 'password'], values);
+  const [addUser, { error }] = useMutation(ADD_USER);
 
-    if (!errors.email) {
-      const emailError = email(values.email);
-      if (emailError) {
-        errors.email = emailError;
-      }
-    }
+  // const validate = (values) => {
+  //   const errors = required(['firstName', 'lastName', 'email', 'password'], values);
 
-    return errors;
+  //   if (!errors.email) {
+  //     const emailError = email(values.email);
+  //     if (emailError) {
+  //       errors.email = emailError;
+  //     }
+  //   }
+
+  //   return errors;
+  // };
+
+  // const handleSubmit = () => {
+  //   setSent(true);
+  // };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
   };
 
-  const handleSubmit = () => {
-    setSent(true);
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    // console.log(formState);
+
+    try {
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
+
+      Auth.login(data.addUser.token);
+    } catch (e) {
+      console.error(e);
+    }
   };
 
   return (
@@ -49,8 +85,8 @@ function SignUp() {
         </React.Fragment>
         <Form
           onSubmit={handleSubmit}
-          subscription={{ submitting: true }}
-          validate={validate}
+        subscription={{ submitting: true }}
+        // validate={validate}
         >
           {({ handleSubmit: handleSubmit2, submitting }) => (
             <Box component="form" onSubmit={handleSubmit2} noValidate sx={{ mt: 6 }}>
@@ -64,6 +100,8 @@ function SignUp() {
                     fullWidth
                     label="First name"
                     name="firstName"
+                    onChange={handleChange}
+                    value={formState.firstName}
                     required
                   />
                 </Grid>
@@ -75,6 +113,8 @@ function SignUp() {
                     fullWidth
                     label="Last name"
                     name="lastName"
+                    onChange={handleChange}
+                    value={formState.lastName}
                     required
                   />
                 </Grid>
@@ -87,6 +127,8 @@ function SignUp() {
                 label="Email"
                 margin="normal"
                 name="email"
+                onChange={handleChange}
+                value={formState.email}
                 required
               />
               <Field
@@ -95,9 +137,24 @@ function SignUp() {
                 disabled={submitting || sent}
                 required
                 name="password"
+                onChange={handleChange}
+                value={formState.password}
                 autoComplete="new-password"
                 label="Password"
                 type="password"
+                margin="normal"
+              />
+              <Field
+                fullWidth
+                component={RFTextField}
+                disabled={submitting || sent}
+                required
+                name="phonenumber"
+                onChange={handleChange}
+                value={formState.phonenumber}
+                autoComplete="new-phonenumber"
+                label="Phone Number"
+                type="phonenumber"
                 margin="normal"
               />
               <FormSpy subscription={{ submitError: true }}>
