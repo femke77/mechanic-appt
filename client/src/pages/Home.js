@@ -6,15 +6,18 @@ import HowItWorks from '../modules/views/HowItWorks';
 import AppAppBar from '../modules/views/AppAppBar';
 import withRoot from '../modules/withRoot';
 import AIPortalHero from '../modules/views/AIPortalHero';
-
+import Auth from '../utils/Auth';
 
 function Index() {
+  const isLoggedIn = Auth.loggedIn();
+
   return (
     <React.Fragment>
       <AppAppBar />
       <Hero />
       <ServiceCategories />
-      <HowItWorks />
+      {isLoggedIn ? null :
+      <HowItWorks />}
       <AIPortalHero />
       <AppFooter />
     </React.Fragment>
