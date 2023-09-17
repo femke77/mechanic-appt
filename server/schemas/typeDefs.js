@@ -45,10 +45,17 @@ const typeDefs = gql`
     ): Auth
     login(email: String!, password: String!): Auth
     addAppointment(
+
       startDate: String!
+
       endDate: String
+
       workRequest: String!
-      car: ID!
+
+      model: String!
+
+      year: String!
+
     ): User
   }
 `;

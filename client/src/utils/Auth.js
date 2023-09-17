@@ -20,19 +20,15 @@ class AuthService {
     return localStorage.getItem("id_token");
   }
 
-  isTokenExpired() {
-    const token = this.getToken();
-    if (!token) {
-      return true;
+  isTokenExpired(token) {
+    try {
+      const decoded = decode(token);
+      if (decoded.exp < Date.now() / 1000) {
+        return true;
+      } else return false;
+    } catch (err) {
+      return false;
     }
-    const decoded = decode(token);
-    if (decoded.exp < Date.now() / 1000) {
-      localStorage.removeItem("id_token");
-      window.alert("Your session has expired. Please log in again.");
-      window.location.assign("/login");
-      return true;
-    }
-    return false;
   }
 
   login(idToken) {
@@ -41,7 +37,7 @@ class AuthService {
     localStorage.setItem("id_token", idToken);
     // localStorage.setItem("trainer_id", data.login.user._id);
     //if we have issues deploying to the heroku server it might start here with /homepagecontainer and not using / 
-    window.location.assign("/homepagecontainer");
+    window.location.assign("/");
   }
 
   logout() {

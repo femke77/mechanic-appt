@@ -4,14 +4,15 @@ import AppAppBar from '../modules/views/AppAppBar';
 import withRoot from '../modules/withRoot';
 import 'devextreme/dist/css/dx.light.css';
 import '../App.css';
- 
+import AppointmentForm from '../pages/AppointmentForm';
 // import { Scheduler } from 'devextreme-react/scheduler';
  
-function App() {
+function Appointment() {
 
   return (
     <React.Fragment>
       <AppAppBar />
+      <AppointmentForm/>
       {/* <div className="schedule-container">
       <Scheduler className="scheduler">
         </Scheduler>
@@ -21,6 +22,6 @@ function App() {
   );
 }
 
-const AppWithRoot = withRoot(App);
+const AppointmentWithRoot = withRoot(Appointment);
 
-export default AppWithRoot;
+export default AppointmentWithRoot;

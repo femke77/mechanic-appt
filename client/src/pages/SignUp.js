@@ -14,11 +14,13 @@ import FormFeedback from '../modules/form/FormFeedback';
 import withRoot from '../modules/withRoot';
 import { ADD_USER } from '../utils/Mutations';
 import { useMutation } from '@apollo/client';
+import Auth from '../utils/Auth';
+
 
 
 function SignUp() {
   const [sent, setSent] = React.useState(false);
-  const [forms, formState, setFormState] = React.useState({
+  const [ formState, setFormState] = React.useState({
     firstName: '',
     lastName: '',
     email: '',
@@ -28,18 +30,18 @@ function SignUp() {
 
   const [addUser, { error }] = useMutation(ADD_USER);
 
-  // const validate = (values) => {
-  //   const errors = required(['firstName', 'lastName', 'email', 'password'], values);
+  const validate = (values) => {
+    const errors = required(['firstName', 'lastName', 'email', 'password', 'phonenumber'], values);
 
-  //   if (!errors.email) {
-  //     const emailError = email(values.email);
-  //     if (emailError) {
-  //       errors.email = emailError;
-  //     }
-  //   }
+    if (!errors.email) {
+      const emailError = email(values.email);
+      if (emailError) {
+        errors.email = emailError;
+      }
+    }
 
-  //   return errors;
-  // };
+    return errors;
+  };
 
   // const handleSubmit = () => {
   //   setSent(true);
@@ -54,13 +56,14 @@ function SignUp() {
     });
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    // console.log(formState);
+  const handleSubmit = async (values) => {
+    // const formData = getFieldValue (values)
+        setSent(true);
+    console.log(values);
 
     try {
       const { data } = await addUser({
-        variables: { ...formState },
+        variables: { ...values },
       });
 
       Auth.login(data.addUser.token);
@@ -86,7 +89,7 @@ function SignUp() {
         <Form
           onSubmit={handleSubmit}
         subscription={{ submitting: true }}
-        // validate={validate}
+        validate={validate}
         >
           {({ handleSubmit: handleSubmit2, submitting }) => (
             <Box component="form" onSubmit={handleSubmit2} noValidate sx={{ mt: 6 }}>
@@ -100,7 +103,6 @@ function SignUp() {
                     fullWidth
                     label="First name"
                     name="firstName"
-                    onChange={handleChange}
                     value={formState.firstName}
                     required
                   />
@@ -113,7 +115,6 @@ function SignUp() {
                     fullWidth
                     label="Last name"
                     name="lastName"
-                    onChange={handleChange}
                     value={formState.lastName}
                     required
                   />
@@ -127,7 +128,6 @@ function SignUp() {
                 label="Email"
                 margin="normal"
                 name="email"
-                onChange={handleChange}
                 value={formState.email}
                 required
               />
@@ -137,7 +137,6 @@ function SignUp() {
                 disabled={submitting || sent}
                 required
                 name="password"
-                onChange={handleChange}
                 value={formState.password}
                 autoComplete="new-password"
                 label="Password"
@@ -150,7 +149,6 @@ function SignUp() {
                 disabled={submitting || sent}
                 required
                 name="phonenumber"
-                onChange={handleChange}
                 value={formState.phonenumber}
                 autoComplete="new-phonenumber"
                 label="Phone Number"

@@ -2,11 +2,14 @@ import * as React from 'react';
 import Button from '../components/Button';
 import Typography from '../components/Typography';
 import HeroLayout from './HeroLayout';
+import Auth from '../../utils/Auth';
 
 const backgroundImage =
   'https://images.fineartamerica.com/images/artworkimages/mediumlarge/3/a-man-mechanic-and-woman-customer-discussing-repairs-anek-suwannaphoom.jpg';
 
 export default function Hero() {
+  const isLoggedIn = Auth.loggedIn();
+
   return (
     <HeroLayout
       sxBackground={{
@@ -32,16 +35,29 @@ export default function Hero() {
       >
         Get your maintenance service or repairs done quickly and at your convenience.
       </Typography>
+      {isLoggedIn ?(
       <Button
         color="secondary"
         variant="contained"
         size="large"
         component="a"
-        href="http://localhost:3000/signup"
+        href="/appointment"
         sx={{ minWidth: 200 }}
       >
-        Register
+        Set an Appointment
       </Button>
+      ) : (
+        <Button
+          color="secondary"
+          variant="contained"
+          size="large"
+          component="a"
+          href="/signup"
+          sx={{minWidth: 200}}
+          >
+            Register
+          </Button>
+      )}
       <Typography variant="body2" color="inherit" sx={{ mt: 2 }}>
         Discover the experience
       </Typography>
