@@ -31,7 +31,7 @@ const typeDefs = gql`
 
   type Query {
     # get the cars in the read-only car collection
-    cars: [Car]
+    getCars: [Car]
     me: User
   }
 
