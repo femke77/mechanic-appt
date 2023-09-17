@@ -4,7 +4,7 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
-    cars: async () => {
+    getCars: async () => {
       return await Car.find({});
     },
     me: async (_, __, context) => {
@@ -53,22 +53,44 @@ const resolvers = {
 
       return { token, user };
     },
-    addAppointment: async (_, args, context) => {
+    addAppointment: async (_, {model, year, startDate, endDate, workRequest}, context) => {
+
       if (context.user) {
-        const appt = await Appointment.create(args);
+
+        const car = await Car.findOne({model, year}) // update this to get id by searching mongo for id matching year and model
+
+        console.log(car._id);
+
+        const appt = await Appointment.create({startDate, endDate, workRequest, car: car._id});
+
+        console.log(appt);
+
         const user = await User.findOneAndUpdate(
+
           { _id: context.user._id },
+
           { $addToSet: { appointments: appt._id } },
+
           { new: true }
-        )
+
+        );
+
         return user.populate({
-          path: 'appointments',
+
+          path: "appointments",
+
           populate: {
-            path: 'car'
-          }
+
+            path: "car",
+
+          },
+
         });
+
       }
+
       throw new AuthenticationError("You must be logged in");
+
     },
   },
 };

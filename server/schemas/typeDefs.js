@@ -31,7 +31,7 @@ const typeDefs = gql`
 
   type Query {
     # get the cars in the read-only car collection
-    cars: [Car]
+    getCars: [Car]
     me: User
   }
 
@@ -45,10 +45,17 @@ const typeDefs = gql`
     ): Auth
     login(email: String!, password: String!): Auth
     addAppointment(
+
       startDate: String!
+
       endDate: String
+
       workRequest: String!
-      car: ID!
+
+      model: String!
+
+      year: String!
+
     ): User
   }
 `;

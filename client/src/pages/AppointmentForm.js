@@ -5,7 +5,7 @@ import { ADD_APPT } from "../utils/Mutations";
 
 export default function MakeAppt() {
 
-  const [addAppointment, {error}] = useMutation(ADD_APPT)
+  const [addAppointment, {error}] = useMutation(ADD_APPT);
 
   const [model, setModel] = useState("");
   const [year, setYear] = useState("");
