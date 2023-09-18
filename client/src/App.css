@@ -37,7 +37,7 @@
   }
 }
 
-.schedule-container {
+/* .schedule-container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -47,5 +47,17 @@
 }
 
 .scheduler {
+  height: 500px;
+} */
+
+.apptform-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: 100px;
+  margin-bottom: 100px;  
+}
+
+.appt-form {
   height: 500px;
 }

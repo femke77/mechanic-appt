@@ -44,7 +44,7 @@ export default function Hero() {
         href="/appointment"
         sx={{ minWidth: 200 }}
       >
-        Set an Appointment
+        Request an Appointment
       </Button>
       ) : (
         <Button
