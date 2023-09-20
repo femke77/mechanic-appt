@@ -7,7 +7,7 @@ import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 
 
 export default function ResponsiveDatePickers() {
-    const currentDate = dayjs();
+   
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -20,7 +20,7 @@ export default function ResponsiveDatePickers() {
         ]}
       >
         <DemoItem>
-          <DesktopDatePicker defaultValue={currentDate} />
+          <DesktopDatePicker  />
         </DemoItem>
       </DemoContainer>
     </LocalizationProvider>

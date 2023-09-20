@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-
+const dayjs = require('dayjs')
 const apptSchema = new Schema(
   {
     // start and end look like this: 2023-09-12T07:00:00
     startDate: {
       type: String,
       required: true,
+      // get: (ts) => dayjs(ts).format('MM/DD/YY HH:mm')
     },
     // for blocking out hours in the calendar, not sure how this will be handled yet
     endDate: {

@@ -19,6 +19,7 @@ export const QUERY_ME = gql`
       email
       phonenumber
       appointments {
+        _id
         startDate
         endDate
         workRequest
