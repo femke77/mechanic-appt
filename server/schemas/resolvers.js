@@ -11,9 +11,9 @@ const resolvers = {
     me: async (_, __, context) => {
       if (context.user) {
         return await User.findOne({ _id: context.user._id }).populate({
-          path: "appointments",
+          path: "appointments",options: { sort: {'startDate': -1}},
           populate: {
-            path: "car",
+            path: "car",       
           },
         });
       }

@@ -7,7 +7,7 @@ const apptSchema = new Schema(
     startDate: {
       type: String,
       required: true,
-      // get: (ts) => dayjs(ts).format('MM/DD/YY HH:mm')
+      get: (ts) => dayjs(ts).format('MM/DD/YY hh:mma')
     },
     // for blocking out hours in the calendar, not sure how this will be handled yet
     endDate: {

@@ -4,7 +4,7 @@ import AppAppBar from '../modules/views/AppAppBar';
 import withRoot from '../modules/withRoot';
 import { useQuery } from '@apollo/client';
 import { QUERY_ME } from '../utils/Queries';
-
+import { Box } from '@mui/material';
 
 function Profile() {
  const {data, loading, error} = useQuery(QUERY_ME)
@@ -14,7 +14,8 @@ function Profile() {
  return (
       <React.Fragment>
         <AppAppBar />
-        <h2>Your past appointments</h2>
+        <Box sx={{p:2}}>
+        <h2>Your Appointments</h2>
         {me && 
         me.appointments.map(appt => (
           <div key={appt._id}>
@@ -25,6 +26,7 @@ function Profile() {
           </div>
         ))
         }
+        </Box>
         <AppFooter />
       </React.Fragment>
     );

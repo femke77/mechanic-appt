@@ -41,7 +41,7 @@ class AuthService {
     localStorage.setItem("id_token", idToken);
     // localStorage.setItem("trainer_id", data.login.user._id);
     //if we have issues deploying to the heroku server it might start here with /homepagecontainer and not using / 
-    window.location.assign("/homepagecontainer");
+    window.location.assign("/");
   }
 
   logout() {

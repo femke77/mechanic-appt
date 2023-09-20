@@ -5,7 +5,6 @@ import { ADD_APPT } from "../utils/Mutations";
 import withRoot from "../modules/withRoot";
 import AppAppBar from "../modules/views/AppAppBar";
 import dayjs from "dayjs";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -114,6 +113,8 @@ function AppointmentForm() {
             <MenuItem value={`14:30:00`}>2:30pm</MenuItem>
             <MenuItem value={`15:00:00`}>3:00pm</MenuItem>
             <MenuItem value={`15:30:00`}>3:30pm</MenuItem>
+            <MenuItem value={`16:00:00`}>4:00pm</MenuItem>
+            <MenuItem value={`16:30:00`}>4:30pm</MenuItem>
           </Select>
         </FormControl>
 
