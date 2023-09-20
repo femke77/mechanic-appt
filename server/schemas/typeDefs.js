@@ -11,7 +11,7 @@ const typeDefs = gql`
   }
 
   type Appointment {
-   _id: ID!
+    _id: ID!
     startDate: String!
     endDate: String
     workRequest: String!
@@ -19,7 +19,7 @@ const typeDefs = gql`
   }
 
   type Car {
-   id: ID!
+    id: ID!
     year: Int
     model: String
   }
@@ -33,6 +33,7 @@ const typeDefs = gql`
     # get the cars in the read-only car collection
     getCars: [Car]
     me: User
+    appts: [Appointment]
   }
 
   type Mutation {
@@ -45,17 +46,11 @@ const typeDefs = gql`
     ): Auth
     login(email: String!, password: String!): Auth
     addAppointment(
-
       startDate: String!
-
       endDate: String
-
       workRequest: String!
-
       model: String!
-
       year: String!
-
     ): User
   }
 `;

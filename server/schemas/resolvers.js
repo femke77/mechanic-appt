@@ -4,20 +4,23 @@ const { signToken } = require("../utils/auth");
 
 const resolvers = {
   Query: {
+    // currently only BMW make in
     getCars: async () => {
       return await Car.find({});
     },
     me: async (_, __, context) => {
       if (context.user) {
-        return await User.findOne({ _id: context.user._id })
-          .populate({
-            path: 'appointments',
-            populate: {
-              path: 'car'
-            }
-          });
+        return await User.findOne({ _id: context.user._id }).populate({
+          path: "appointments",
+          populate: {
+            path: "car",
+          },
+        });
       }
       throw new AuthenticationError("You must be logged in");
+    },
+    appts: async () => {
+      return await Appointment.find({}).populate("car");
     },
   },
   Mutation: {
@@ -54,43 +57,24 @@ const resolvers = {
       return { token, user };
     },
     addAppointment: async (_, {model, year, startDate, endDate, workRequest}, context) => {
-
       if (context.user) {
-
         const car = await Car.findOne({model, year}) // update this to get id by searching mongo for id matching year and model
-
         console.log(car._id);
-
         const appt = await Appointment.create({startDate, endDate, workRequest, car: car._id});
-
         console.log(appt);
-
         const user = await User.findOneAndUpdate(
-
           { _id: context.user._id },
-
           { $addToSet: { appointments: appt._id } },
-
           { new: true }
-
         );
-
         return user.populate({
-
           path: "appointments",
-
           populate: {
-
             path: "car",
-
           },
-
         });
-
       }
-
       throw new AuthenticationError("You must be logged in");
-
     },
   },
 };

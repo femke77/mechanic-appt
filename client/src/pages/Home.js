@@ -14,6 +14,9 @@ function Index() {
   return (
     <React.Fragment>
       <AppAppBar />
+  
+      <AppointmentForm/>   {/* for testing */}
+
       <Hero />
       <ServiceCategories />
       {isLoggedIn ? null :
