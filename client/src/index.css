@@ -12,13 +12,13 @@ code {
     monospace;
 }
 
+/* FOOTER AT THE BOTTOM WHEN THE PROFILE IS EMPTY */
 html, body, #root, .container{
   /* height: 100vh; */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-
 
 .css-1siwe0b {
   min-height: 80vh;
@@ -27,3 +27,5 @@ html, body, #root, .container{
 footer {
   margin-top: auto;
 }
+
+/* ////////////////////////////////////////////////// */
