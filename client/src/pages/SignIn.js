@@ -1,31 +1,29 @@
-import * as React from 'react';
-import { Field, Form, FormSpy } from 'react-final-form';
-import Box from '@mui/material/Box';
-import Link from '@mui/material/Link';
-import Typography from '../modules/components/Typography';
-import AppFooter from '../modules/views/AppFooter';
-import AppAppBar from '../modules/views/AppAppBar';
-import AppForm from '../modules/views/AppForm';
-import { email, required } from '../modules/form/validation';
-import RFTextField from '../modules/form/RFTextField';
-import FormButton from '../modules/form/FormButton';
-import FormFeedback from '../modules/form/FormFeedback';
-import withRoot from '../modules/withRoot';
-import { useMutation } from '@apollo/client';
-import { LOGIN_USER } from '../utils/Mutations';
-import { useNavigate } from 'react-router-dom';
-import Auth from '../utils/Auth';
-
+import * as React from "react";
+import { Field, Form, FormSpy } from "react-final-form";
+import Box from "@mui/material/Box";
+import Link from "@mui/material/Link";
+import Typography from "../modules/components/Typography";
+import AppFooter from "../modules/views/AppFooter";
+import AppAppBar from "../modules/views/AppAppBar";
+import AppForm from "../modules/views/AppForm";
+import { email, required } from "../modules/form/validation";
+import RFTextField from "../modules/form/RFTextField";
+import FormButton from "../modules/form/FormButton";
+import FormFeedback from "../modules/form/FormFeedback";
+import withRoot from "../modules/withRoot";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../utils/Mutations";
+import { useNavigate } from "react-router-dom";
+import Auth from "../utils/Auth";
 
 function SignIn() {
-
   const navigate = useNavigate();
 
   const [sent, setSent] = React.useState(false);
   const [signin, { error }] = useMutation(LOGIN_USER);
 
   const validate = (values) => {
-    const errors = required(['email', 'password'], values);
+    const errors = required(["email", "password"], values);
 
     if (!errors.email) {
       const emailError = email(values.email);
@@ -42,19 +40,16 @@ function SignIn() {
 
     try {
       const { data } = await signin({
-        variables: { ...values }
+        variables: { ...values },
       });
       if (data && data.login.token) {
         Auth.login(data.login.token);
 
-        navigate.push('/profile');
-
+        navigate.push("/profile");
       }
+    } catch (error) {
+      console.log(error);
     }
-    catch (error) {
-      console.log(error)
-    }
-    // history.push('/profile');
   };
 
   return (
@@ -66,12 +61,8 @@ function SignIn() {
             Sign In
           </Typography>
           <Typography variant="body2" align="center">
-            {'Not a member yet? '}
-            <Link
-              href="/sign-up/"
-              align="center"
-              underline="always"
-            >
+            {"Not a member yet? "}
+            <Link href="/sign-up/" align="center" underline="always">
               Sign Up here
             </Link>
           </Typography>
@@ -82,7 +73,12 @@ function SignIn() {
           validate={validate}
         >
           {({ handleSubmit: handleSubmit2, submitting }) => (
-            <Box component="form" onSubmit={handleSubmit2} noValidate sx={{ mt: 6 }}>
+            <Box
+              component="form"
+              onSubmit={handleSubmit2}
+              noValidate
+              sx={{ mt: 6 }}
+            >
               <Field
                 autoComplete="email"
                 autoFocus
@@ -123,7 +119,7 @@ function SignIn() {
                 color="secondary"
                 fullWidth
               >
-                {submitting || sent ? 'In progress…' : 'Sign In'}
+                {submitting || sent ? "In progress…" : "Sign In"}
               </FormButton>
             </Box>
           )}

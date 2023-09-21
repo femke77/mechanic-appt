@@ -1,37 +1,31 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Grid from '@mui/material/Grid';
-import Link from '@mui/material/Link';
-import { Field, Form, FormSpy } from 'react-final-form';
-import Typography from '../modules/components/Typography';
-import AppFooter from '../modules/views/AppFooter';
-import AppAppBar from '../modules/views/AppAppBar';
-import AppForm from '../modules/views/AppForm';
-import { email, required } from '../modules/form/validation';
-import RFTextField from '../modules/form/RFTextField';
-import FormButton from '../modules/form/FormButton';
-import FormFeedback from '../modules/form/FormFeedback';
-import withRoot from '../modules/withRoot';
-import { ADD_USER } from '../utils/Mutations';
-import { useMutation } from '@apollo/client';
-import Auth from '../utils/Auth';
-
-
+import * as React from "react";
+import Box from "@mui/material/Box";
+import Grid from "@mui/material/Grid";
+import Link from "@mui/material/Link";
+import { Field, Form, FormSpy } from "react-final-form";
+import Typography from "../modules/components/Typography";
+import AppFooter from "../modules/views/AppFooter";
+import AppAppBar from "../modules/views/AppAppBar";
+import AppForm from "../modules/views/AppForm";
+import { email, required } from "../modules/form/validation";
+import RFTextField from "../modules/form/RFTextField";
+import FormButton from "../modules/form/FormButton";
+import FormFeedback from "../modules/form/FormFeedback";
+import withRoot from "../modules/withRoot";
+import { ADD_USER } from "../utils/Mutations";
+import { useMutation } from "@apollo/client";
+import Auth from "../utils/Auth";
 
 function SignUp() {
   const [sent, setSent] = React.useState(false);
-  const [ formState, setFormState] = React.useState({
-    firstName: '',
-    lastName: '',
-    email: '',
-    password: '',
-    phonenumber: ''
-  });
 
   const [addUser, { error }] = useMutation(ADD_USER);
 
   const validate = (values) => {
-    const errors = required(['firstName', 'lastName', 'email', 'password', 'phonenumber'], values);
+    const errors = required(
+      ["firstName", "lastName", "email", "password", "phonenumber"],
+      values
+    );
 
     if (!errors.email) {
       const emailError = email(values.email);
@@ -43,22 +37,8 @@ function SignUp() {
     return errors;
   };
 
-  // const handleSubmit = () => {
-  //   setSent(true);
-  // };
-
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
   const handleSubmit = async (values) => {
-    // const formData = getFieldValue (values)
-        setSent(true);
+    setSent(true);
     console.log(values);
 
     try {
@@ -88,11 +68,16 @@ function SignUp() {
         </React.Fragment>
         <Form
           onSubmit={handleSubmit}
-        subscription={{ submitting: true }}
-        validate={validate}
+          subscription={{ submitting: true }}
+          validate={validate}
         >
           {({ handleSubmit: handleSubmit2, submitting }) => (
-            <Box component="form" onSubmit={handleSubmit2} noValidate sx={{ mt: 6 }}>
+            <Box
+              component="form"
+              onSubmit={handleSubmit2}
+              noValidate
+              sx={{ mt: 6 }}
+            >
               <Grid container spacing={2}>
                 <Grid item xs={12} sm={6}>
                   <Field
@@ -103,7 +88,6 @@ function SignUp() {
                     fullWidth
                     label="First name"
                     name="firstName"
-                    value={formState.firstName}
                     required
                   />
                 </Grid>
@@ -115,7 +99,6 @@ function SignUp() {
                     fullWidth
                     label="Last name"
                     name="lastName"
-                    value={formState.lastName}
                     required
                   />
                 </Grid>
@@ -128,7 +111,6 @@ function SignUp() {
                 label="Email"
                 margin="normal"
                 name="email"
-                value={formState.email}
                 required
               />
               <Field
@@ -137,7 +119,6 @@ function SignUp() {
                 disabled={submitting || sent}
                 required
                 name="password"
-                value={formState.password}
                 autoComplete="new-password"
                 label="Password"
                 type="password"
@@ -149,7 +130,6 @@ function SignUp() {
                 disabled={submitting || sent}
                 required
                 name="phonenumber"
-                value={formState.phonenumber}
                 autoComplete="new-phonenumber"
                 label="Phone Number"
                 type="phonenumber"
@@ -170,7 +150,7 @@ function SignUp() {
                 color="secondary"
                 fullWidth
               >
-                {submitting || sent ? 'In progress…' : 'Sign Up'}
+                {submitting || sent ? "In progress…" : "Sign Up"}
               </FormButton>
             </Box>
           )}
