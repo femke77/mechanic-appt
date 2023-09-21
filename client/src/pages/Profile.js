@@ -24,15 +24,7 @@ function Profile() {
       <AppAppBar />
       <Box sx={{ p: 2 }}>
         <h2>Your Appointments</h2>
-        {/* {me.appointments &&
-          me.appointments
-            .filter((a) => dayjs(a.startDate).isAfter(today, "day"))
-            .map((a) => (
-              <>
-                <div>test</div>
-                <div>{a.startDate}</div>
-              </>
-            ))} */}
+   
         {loggedIn && me
           ? me.appointments.map((appt) => (
               <div key={appt._id}>

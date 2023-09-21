@@ -65,6 +65,7 @@ function AppointmentForm() {
         },
       });
       console.log(data);
+      window.location.assign('/profile')
     } catch (error) {
       console.log(error);
     }
