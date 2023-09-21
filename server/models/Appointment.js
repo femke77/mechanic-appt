@@ -5,7 +5,7 @@ const apptSchema = new Schema(
   {
     // start and end look like this: 2023-09-12T07:00:00
     startDate: {
-      type: String,
+      type: Date,
       required: true,
       get: (ts) => dayjs(ts).format('MM/DD/YY hh:mma')
     },

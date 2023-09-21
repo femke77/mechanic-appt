@@ -19,7 +19,7 @@ function Profile() {
   return (
     <React.Fragment>
       <AppAppBar />
-      <Box sx={{ p: 2 }}>
+      <Box sx={{ p: 2, display: "flex", flexDirection: "column" }}>
         <h2>Your Appointments</h2>
    
         {loggedIn && me
