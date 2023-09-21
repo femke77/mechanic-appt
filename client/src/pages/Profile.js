@@ -13,11 +13,8 @@ function Profile() {
   const me = data?.me || {};
 
   const loggedIn = Auth.loggedIn();
-  const today = dayjs().format('MM-DD');
 
-  console.log(today);
 
-  // console.log(past);
   if (loading) return <h2>Loading...</h2>;
   return (
     <React.Fragment>
@@ -39,6 +36,7 @@ function Profile() {
             ))
           : window.location.assign("/signin")}
       </Box>
+      {error && <div>{error.message}</div>}
       <AppFooter />
     </React.Fragment>
   );
