@@ -12,14 +12,6 @@ import Auth from '../utils/Auth';
  
 function Appointment() {
 
-  const navigate = useNavigate();
-
-  const isLoggedIn = Auth.loggedIn();
-
-  if (!isLoggedIn) {
-    navigate ('/signin');
-    return null;
-  }
 
   return (
     <React.Fragment>
