@@ -23,13 +23,13 @@ export default function ModelYearSelect({model, year, handleModelChange, handleY
       }, {});
 
       setUniqueModels(uniqueModels);
-      setModels(Object.keys(uniqueModels).reverse());
+      setModels(Object.keys(uniqueModels).slice().reverse());
     }
   }, [data]);
+
   const handleChange = (e) => {
     handleYearChange("")
     handleModelChange(e.target.value)
-    
   };
 
   const modelYears = uniqueModels[model] || [];
@@ -40,6 +40,7 @@ export default function ModelYearSelect({model, year, handleModelChange, handleY
     setErrorMessage("😞 An error has occured.");
     console.log(error.message);
   };
+
   return (
     <>
       <label htmlFor="modelDropdown">Select a Model: </label>
@@ -63,7 +64,7 @@ export default function ModelYearSelect({model, year, handleModelChange, handleY
           onChange={(e)=>handleYearChange(e.target.value)}
         >
           <option value=""> Year</option>
-          {modelYears.map((year, index) => (
+          {modelYears.slice().reverse().map((year, index) => (
             <option key={index} value={year}>
               {year}
             </option>

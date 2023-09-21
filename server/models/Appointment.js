@@ -23,6 +23,10 @@ const apptSchema = new Schema(
       ref: "car",
       required: true,
     },
+    notes: {
+      type: String,
+      default: "No notes yet. Check back soon."
+    }
   },
   {
     toJSON: {
