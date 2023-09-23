@@ -14,50 +14,47 @@ function Profile() {
 
   const loggedIn = Auth.loggedIn();
 
-  // me && console.log(dayjs(me.appointments[0].startDate).isAfter(dayjs()))
+
   if (loading) return <h2>Loading...</h2>;
   return (
     <React.Fragment>
       <AppAppBar />
+      {!loggedIn && window.location.assign("/signin")}
+
       <Box sx={{ p: 2, display: "flex", flexDirection: "column" }}>
         <h2>Your Upcoming Appointments</h2>
-        <>
-          {loggedIn && me
-            ? me.appointments
-                .filter((appt) => dayjs(appt.startDate).isAfter(dayjs()))
-                .map((appt) => (
-                  <div key={appt._id}>
-                    <p>
-                      Date: {dayjs(appt.startDate).format("MM/DD/YYYY hh:mma")}
-                    </p>
-                    <p>Work Requested: {appt.workRequest}</p>
-                    <p>
-                      Car: {"BMW"} {appt.car.model} {appt.car.year}
-                    </p>
+        <div>
+          {me.appointments &&
+            me.appointments
+              .filter((appt) => dayjs(appt.startDate).isAfter(dayjs()))
+              .map((appt) => (
+                <div key={appt._id}>
+                  <p>
+                    Date: {dayjs(appt.startDate).format("MM/DD/YYYY hh:mma")}
+                  </p>
+                  <p>Work Requested: {appt.workRequest}</p>
+                  <p>
+                    Car: {"BMW"} {appt.car.model} {appt.car.year}
+                  </p>
 
-                    <hr />
-                  </div>
-                ))
-            : window.location.assign("/signin")}
-          <h2>Your Past appointments</h2>
-          {loggedIn && me
-            ? me.appointments
-                .filter((appt) => dayjs(appt.startDate).isBefore(dayjs()))
-                .map((appt) => (
-                  <div key={appt._id}>
-                    <p>
-                      Date: {dayjs(appt.startDate).format("MM/DD/YYYY hh:mma")}
-                    </p>
-                    <p>Work Requested: {appt.workRequest}</p>
-                    <p>
-                      Car: {"BMW"} {appt.car.model} {appt.car.year}
-                    </p>
-                    <p>Mechanic's notes: {appt.notes}</p>
-                    <hr />
-                  </div>
-                ))
-            : window.location.assign("/signin")}
-        </>
+                  <hr />
+                </div>
+              ))}
+          <h2>Your Past Appointments</h2> <br />
+          {me.appointments
+            .filter((appt) => dayjs(appt.startDate).isBefore(dayjs()))
+            .map((appt) => (
+              <div key={appt._id}>
+                <p>Date: {dayjs(appt.startDate).format("MM/DD/YYYY hh:mma")}</p>
+                <p>Work Requested: {appt.workRequest}</p>
+                <p>
+                  Car: {"BMW"} {appt.car.model} {appt.car.year}
+                </p>
+                <p>Mechanic's notes: {appt.notes}</p>
+                <hr />
+              </div>
+            ))}
+        </div>
       </Box>
       {error && <div>{error.message}</div>}
       <AppFooter />

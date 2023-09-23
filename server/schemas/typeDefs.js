@@ -7,6 +7,7 @@ const typeDefs = gql`
     lastName: String!
     email: String!
     phonenumber: String!
+    notes: String
     appointments: [Appointment]
   }
 
@@ -51,6 +52,7 @@ const typeDefs = gql`
       workRequest: String!
       model: String!
       year: String!
+      notes: String
     ): User
   }
 `;

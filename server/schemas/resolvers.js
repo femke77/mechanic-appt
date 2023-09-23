@@ -26,7 +26,7 @@ const resolvers = {
   Mutation: {
     addUser: async (
       _,
-      { firstName, lastName, email, password, phonenumber }
+      { firstName, lastName, email, password, phonenumber, notes }
     ) => {
       const user = await User.create({
         firstName,
@@ -34,6 +34,7 @@ const resolvers = {
         email,
         phonenumber,
         password,
+        notes
       });
       const token = signToken(user);
       return { token, user };

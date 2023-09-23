@@ -31,7 +31,6 @@ export const QUERY_ME = gql`
     }
   }
 `;
-
 export const QUERY_ALL_APPTS = gql`
   query appts {
     appts {

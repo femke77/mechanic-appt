@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-const dayjs = require('dayjs')
+
+
 const apptSchema = new Schema(
   {
     // start and end look like this: 2023-09-12T07:00:00
@@ -25,8 +26,8 @@ const apptSchema = new Schema(
     },
     notes: {
       type: String,
-      default: "No notes yet. Check back soon."
-    }
+      default: "No notes yet, check back soon."
+    },
   },
   {
     toJSON: {
