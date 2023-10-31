@@ -7,7 +7,9 @@ import AppAppBar from "../modules/views/AppAppBar";
 import withRoot from "../modules/withRoot";
 import AIPortalHero from "../modules/views/AIPortalHero";
 
+
 function Index() {
+
   return (
     <React.Fragment>
       <AppAppBar />

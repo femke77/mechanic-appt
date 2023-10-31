@@ -17,7 +17,7 @@ import { useNavigate } from "react-router-dom";
 import Auth from "../utils/Auth";
 
 function SignIn() {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const [sent, setSent] = React.useState(false);
   const [signin, { error }] = useMutation(LOGIN_USER);
@@ -31,6 +31,10 @@ function SignIn() {
         errors.email = emailError;
       }
     }
+    if (error) {
+      alert (error)
+      window.location.reload(false);
+    }
 
     return errors;
   };
@@ -39,13 +43,15 @@ function SignIn() {
     setSent(true);
 
     try {
-      const { data } = await signin({
+      const { data} = await signin({
         variables: { ...values },
       });
-      if (data && data.login.token) {
+      if (data && data.login.token ) {
         Auth.login(data.login.token);
 
-        navigate.push("/profile");
+        // navigate("/");
+      } else if (error) {
+        console.log(error);
       }
     } catch (error) {
       console.log(error);

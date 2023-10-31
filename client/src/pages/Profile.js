@@ -14,14 +14,13 @@ function Profile() {
 
   const loggedIn = Auth.loggedIn();
 
-
   if (loading) return <h2>Loading...</h2>;
   return (
     <React.Fragment>
       <AppAppBar />
       {!loggedIn && window.location.assign("/signin")}
 
-      <Box sx={{ p: 2, display: "flex", flexDirection: "column" }}>
+      <Box sx={{ p: 2, display: "flex", flexDirection: "column", mx: 3}}>
         <h2>Your Upcoming Appointments</h2>
         <div>
           {me.appointments &&
@@ -36,11 +35,12 @@ function Profile() {
                   <p>
                     Car: {"BMW"} {appt.car.model} {appt.car.year}
                   </p>
-
+                  <br />
                   <hr />
                 </div>
               ))}
-          <h2>Your Past Appointments</h2> <br />
+
+          <h2>Your Past Appointments</h2>
           {me.appointments
             .filter((appt) => dayjs(appt.startDate).isBefore(dayjs()))
             .map((appt) => (

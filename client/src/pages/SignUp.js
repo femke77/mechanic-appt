@@ -16,7 +16,9 @@ import { ADD_USER } from "../utils/Mutations";
 import { useMutation } from "@apollo/client";
 import Auth from "../utils/Auth";
 
+
 function SignUp() {
+
   const [sent, setSent] = React.useState(false);
 
   const [addUser, { error }] = useMutation(ADD_USER);
@@ -33,6 +35,10 @@ function SignUp() {
         errors.email = emailError;
       }
     }
+    if (error) {
+      alert (error)
+      window.location.reload(false);
+    }
 
     return errors;
   };
@@ -47,6 +53,7 @@ function SignUp() {
       });
 
       Auth.login(data.addUser.token);
+      // navigate("/")
     } catch (e) {
       console.error(e);
     }
